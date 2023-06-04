@@ -1,15 +1,15 @@
 package com.payment.service.controller;
 
+import com.payment.service.exception.RequestException;
 import com.payment.service.model.dto.PaymentDto;
 import com.payment.service.service.IPaymentService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1.0.0/payment")
@@ -19,7 +19,11 @@ public class PaymentController {
     private IPaymentService service;
 
     @GetMapping("/{id}")
-    public List<PaymentDto> findByIdClient(@PathVariable Long id){
-        return service.findByIdClient(id);
+    public ResponseEntity<?> findByIdClient(@PathVariable Long id){
+        Optional<PaymentDto>response=service.findByIdClient(id);
+        if(response.isPresent()){
+            return ResponseEntity.ok(response.get());
+        }
+        throw new RequestException("Payment not found","404",HttpStatus.NOT_FOUND);
     }
 }

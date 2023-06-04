@@ -1,9 +1,8 @@
 package com.payment.service.service;
 
 import com.payment.service.model.dto.PaymentDto;
-
-import java.util.List;
+import java.util.Optional;
 
 public interface IPaymentService {
-    public List<PaymentDto>findByIdClient(Long id);
+    public Optional<PaymentDto> findByIdClient(Long id);
 }
