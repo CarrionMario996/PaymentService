@@ -18,8 +18,8 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="client_id")
-    private Long clientId;
+    @Column(name="order_id")
+    private String orderId;
     @Column(name="payment_system")
     private String paymentSystem;
     @Column(name="payment_system_name")

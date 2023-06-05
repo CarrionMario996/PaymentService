@@ -19,8 +19,8 @@ public class PaymentController {
     private IPaymentService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findByIdClient(@PathVariable Long id){
-        Optional<PaymentDto>response=service.findByIdClient(id);
+    public ResponseEntity<?> findByIdClient(@PathVariable String id){
+        Optional<PaymentDto>response=service.findByOrderId(id);
         if(response.isPresent()){
             return ResponseEntity.ok(response.get());
         }

@@ -17,8 +17,8 @@ public class PaymentServiceImpl implements IPaymentService{
     @Autowired
     private PaymentRepository repository;
     @Override
-    public Optional<PaymentDto> findByIdClient(Long id) {
-        Optional<PaymentDto>payment=repository.findByIdClient(id);
+    public Optional<PaymentDto> findByOrderId(String id) {
+        Optional<PaymentDto>payment=repository.findByOrderId(id);
         if(payment.isPresent()){
             PaymentDto paymentDto=payment.get();
             return Optional.of(paymentDto);

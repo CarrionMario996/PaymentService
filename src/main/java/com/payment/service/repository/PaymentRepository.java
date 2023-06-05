@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface PaymentRepository extends CrudRepository<Payment,Long> {
 
-    @Query(value = "select new com.payment.service.model.dto.PaymentDto(p.paymentSystemName,p.message) from Payment p where p.clientId=?1")
-    public Optional<PaymentDto> findByIdClient(Long id);
+    @Query(value = "select new com.payment.service.model.dto.PaymentDto(p.paymentSystemName,p.message) from Payment p where p.orderId=?1")
+    public Optional<PaymentDto> findByOrderId(String id);
 }
