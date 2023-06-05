@@ -27,5 +27,3 @@ Servicios desarrollados
 4.1 localhost:9090/api/v1.0.0/payment/{id}
 
 4.1.2 En caso ocupar postman ingresar token en authorization y el tipo de token es Bearer Token
-
-Comparto link de colleccion de postman:
